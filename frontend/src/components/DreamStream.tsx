@@ -34,17 +34,17 @@ export function DreamStream() {
     const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
     return (
-        <main ref={containerRef} className="relative h-[800px] overflow-hidden bg-white">
-            <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
+        <main ref={containerRef} className="relative h-[600px] md:h-[800px] overflow-hidden bg-white dark:bg-slate-900 transition-colors">
+            <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white dark:from-slate-900 to-transparent z-10 pointer-events-none" />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 h-full">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 px-4 md:px-8 h-full">
                 <Column images={COLUMN_1} y={y1} />
                 <Column images={COLUMN_2} y={y2} className="hidden md:flex translate-y-[-100px]" />
                 <Column images={COLUMN_3} y={y3} className="hidden md:flex" />
             </div>
 
-            <div className="absolute inset-x-0 bottom-0 h-60 bg-gradient-to-t from-white via-white/80 to-transparent z-10 flex items-end justify-center pb-20 pointer-events-none">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 text-center tracking-tight">
+            <div className="absolute inset-x-0 bottom-0 h-60 bg-gradient-to-t from-white dark:from-slate-900 via-white/80 dark:via-slate-900/80 to-transparent z-10 flex items-end justify-center pb-20 pointer-events-none">
+                <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white text-center tracking-tight px-4">
                     Every Home has <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-orange-500">Perfect Value.</span>
                 </h2>
@@ -55,7 +55,7 @@ export function DreamStream() {
 
 function Column({ images, y, className = "" }: { images: string[], y: any, className?: string }) {
     return (
-        <motion.div style={{ y }} className={`flex flex-col gap-8 ${className}`}>
+        <motion.div style={{ y }} className={`flex flex-col gap-4 md:gap-8 ${className}`}>
             {images.map((src, i) => (
                 <motion.div
                     key={i}
