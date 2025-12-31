@@ -18,7 +18,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("Homes");
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors overflow-x-hidden">
       {/* Global Effects */}
       <MagicCursor />
       <FallingHouseIntro />
@@ -29,16 +29,16 @@ export default function Home() {
         <>
           {/* Magic Header with Aurora Background */}
           <AuroraBackground>
-            <div className="pt-28 pb-6 text-center relative z-0">
+            <div className="pt-24 md:pt-28 pb-6 text-center relative z-0 px-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-orange-500 to-rose-500 tracking-tighter drop-shadow-sm pb-2 animate-[text_3s_ease-in-out_infinite]">
+                <h1 className="text-4xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-orange-500 to-rose-500 tracking-tighter drop-shadow-sm pb-2 animate-[text_3s_ease-in-out_infinite]">
                   Unlock the Magic.
                 </h1>
-                <p className="text-gray-400 text-xs font-bold tracking-[0.3em] uppercase">AI-Powered Price Prediction</p>
+                <p className="text-gray-400 dark:text-gray-500 text-xs font-bold tracking-[0.3em] uppercase">AI-Powered Price Prediction</p>
               </motion.div>
             </div>
           </AuroraBackground>
@@ -76,7 +76,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <div className="h-32" /> {/* Spacer for fixed navbar */}
+          <div className="h-24 md:h-32" /> {/* Spacer for fixed navbar */}
           <Feedback />
         </motion.div>
       )}
@@ -86,7 +86,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <div className="h-32" /> {/* Spacer for fixed navbar */}
+          <div className="h-24 md:h-32" /> {/* Spacer for fixed navbar */}
           <About />
         </motion.div>
       )}
@@ -96,14 +96,14 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <div className="h-32" /> {/* Spacer for fixed navbar */}
+          <div className="h-24 md:h-32" /> {/* Spacer for fixed navbar */}
           <Contact />
         </motion.div>
       )}
 
       <ScrollReveal>
-        <footer className="py-8 bg-gray-50 border-t border-gray-200 text-center mt-auto">
-          <p className="text-gray-400 text-sm">
+        <footer className="py-8 bg-gray-50 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 text-center mt-auto transition-colors">
+          <p className="text-gray-400 dark:text-gray-500 text-sm">
             &copy; 2025 AIrBnb Predict, Inc.
           </p>
         </footer>

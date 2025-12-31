@@ -27,7 +27,7 @@ export function FallingHouseIntro() {
     if (phase === 'done') return null;
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none overflow-hidden">
             <AnimatePresence>
                 {phase === 'drop' && (
                     <motion.div
@@ -53,20 +53,20 @@ export function FallingHouseIntro() {
                 )}
 
                 {phase === 'shatter' && (
-                    <div className="relative w-64 h-64 md:w-96 md:h-96">
+                    <div className="relative w-48 h-48 md:w-96 md:h-96">
                         {/* Debris Pieces */}
                         <motion.div
                             initial={{ x: 0, y: 0, rotate: 0 }}
-                            animate={{ x: -200, y: -200, rotate: -45, opacity: 0 }}
+                            animate={{ x: -100, y: -100, rotate: -45, opacity: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="absolute top-0 left-0"
+                            className="absolute top-0 left-0 md:animate-none"
                         >
                             <RoofHalf />
                         </motion.div>
 
                         <motion.div
                             initial={{ x: 0, y: 0, rotate: 0 }}
-                            animate={{ x: 200, y: -150, rotate: 45, opacity: 0 }}
+                            animate={{ x: 100, y: -75, rotate: 45, opacity: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="absolute top-0 right-0"
                         >
@@ -75,7 +75,7 @@ export function FallingHouseIntro() {
 
                         <motion.div
                             initial={{ x: 0, y: 0, rotate: 0 }}
-                            animate={{ x: -150, y: 150, rotate: -20, opacity: 0 }}
+                            animate={{ x: -75, y: 75, rotate: -20, opacity: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="absolute bottom-0 left-0"
                         >
@@ -84,7 +84,7 @@ export function FallingHouseIntro() {
 
                         <motion.div
                             initial={{ x: 0, y: 0, rotate: 0 }}
-                            animate={{ x: 150, y: 200, rotate: 90, opacity: 0 }}
+                            animate={{ x: 75, y: 100, rotate: 90, opacity: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="absolute bottom-0 right-0"
                         >
@@ -93,7 +93,7 @@ export function FallingHouseIntro() {
 
                         <motion.div
                             initial={{ y: 0, scale: 1 }}
-                            animate={{ y: 50, scale: 0.8, rotate: 180, opacity: 0 }}
+                            animate={{ y: 25, scale: 0.8, rotate: 180, opacity: 0 }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
                             className="absolute bottom-10 left-1/2 -translate-x-1/2"
                         >
@@ -110,7 +110,7 @@ export function FallingHouseIntro() {
 
 function CartoonHouse() {
     return (
-        <svg viewBox="0 0 200 200" className="w-64 h-64 md:w-96 md:h-96 drop-shadow-2xl">
+        <svg viewBox="0 0 200 200" className="w-48 h-48 md:w-96 md:h-96 drop-shadow-2xl">
             {/* Base */}
             <path d="M40 80 L160 80 L160 180 L40 180 Z" fill="#FFC107" stroke="#333" strokeWidth="4" />
             {/* Roof */}
@@ -126,7 +126,7 @@ function CartoonHouse() {
 
 function RoofHalf({ flip }: { flip?: boolean }) {
     return (
-        <svg viewBox="0 0 100 100" className="w-32 h-32 md:w-48 md:h-48 drop-shadow-lg" style={flip ? { transform: "scaleX(-1)" } : {}}>
+        <svg viewBox="0 0 100 100" className="w-24 h-24 md:w-48 md:h-48 drop-shadow-lg" style={flip ? { transform: "scaleX(-1)" } : {}}>
             <path d="M20 80 L100 20 L100 80 Z" fill="#FF5722" stroke="#333" strokeWidth="4" />
         </svg>
     )
@@ -134,7 +134,7 @@ function RoofHalf({ flip }: { flip?: boolean }) {
 
 function WallPiece() {
     return (
-        <svg viewBox="0 0 100 100" className="w-32 h-32 md:w-48 md:h-48 drop-shadow-lg">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 md:w-48 md:h-48 drop-shadow-lg">
             <path d="M0 0 L60 0 L60 100 L0 100 Z" fill="#FFC107" stroke="#333" strokeWidth="4" />
         </svg>
     )
@@ -142,7 +142,7 @@ function WallPiece() {
 
 function Door() {
     return (
-        <svg viewBox="0 0 50 100" className="w-16 h-32 md:w-24 md:h-48 drop-shadow-lg">
+        <svg viewBox="0 0 50 100" className="w-12 h-24 md:w-24 md:h-48 drop-shadow-lg">
             <rect x="10" y="10" width="30" height="60" fill="#795548" stroke="#333" strokeWidth="3" />
         </svg>
     )
