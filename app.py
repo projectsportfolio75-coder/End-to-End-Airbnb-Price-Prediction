@@ -4,7 +4,11 @@ from src.Airbnb.pipelines.Prediction_Pipeline import CustomData, PredictPipeline
 import numpy as np
 
 app = Flask(__name__)
-CORS(app)
+# Update CORS to allow the new Vercel App
+CORS(app, resources={r"/*": {"origins": [
+    "https://airbnb-sigma-azure.vercel.app",
+    "http://localhost:3000"
+]}})
 
 # Health check endpoint
 @app.route("/", methods=["GET"])

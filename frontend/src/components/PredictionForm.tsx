@@ -36,7 +36,8 @@ export function PredictionForm() {
         const startTime = Date.now();
 
         try {
-            const res = await fetch("/api/index", {
+            const API_URL = "https://end-to-end-airbnb-price-prediction.onrender.com";
+            const res = await fetch(`${API_URL}/predict`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ ...formData, amenities: formData.amenities.join(",") }),
