@@ -11,7 +11,7 @@ const PROPERTY_TYPES = ["Apartment", "Villa", "Bungalow", "Studio", "Heritage Ha
 // Helper function to save prediction to localStorage
 const savePredictionToHistory = (city: string, propertyType: string, guests: number, price: number) => {
     const newRecord: PredictionRecord = {
-        id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`,
         city,
         propertyType,
         guests,

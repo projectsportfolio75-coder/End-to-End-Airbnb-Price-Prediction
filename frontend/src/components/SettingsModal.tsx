@@ -13,9 +13,9 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
-    // Avoid hydration mismatch
+    // Avoid hydration mismatch - setMounted in useEffect is intentional for client-side rendering
     useEffect(() => {
-        setMounted(true); // eslint-disable-line react-hooks/set-state-in-effect
+        setMounted(true);
     }, []);
 
     if (!isOpen) return null;
