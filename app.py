@@ -21,27 +21,44 @@ def predict():
         if not json_data:
             return jsonify({"error": "No JSON data provided"}), 400
         
+        # Helper function for safe type conversion
+        def safe_int(value, default):
+            if value is None:
+                return default
+            try:
+                return int(value)
+            except (ValueError, TypeError):
+                return default
+        
+        def safe_float(value, default):
+            if value is None:
+                return default
+            try:
+                return float(value)
+            except (ValueError, TypeError):
+                return default
+        
         # Validate and convert form data to CustomData object
         data = CustomData(
-            property_type=json_data.get("property_type", "Apartment"),
-            room_type=json_data.get("room_type", "Entire home/apt"),
-            amenities=int(json_data.get("amenities", 0)),
-            accommodates=int(json_data.get("accommodates", 1)),
-            bathrooms=float(json_data.get("bathrooms", 1.0)),
-            bed_type=json_data.get("bed_type", "Real Bed"),
-            cancellation_policy=json_data.get("cancellation_policy", "flexible"),
-            cleaning_fee=json_data.get("cleaning_fee", "1"),
-            city=json_data.get("city", "NYC"),
-            host_has_profile_pic=json_data.get("host_has_profile_pic", "1"),
-            host_identity_verified=json_data.get("host_identity_verified", "1"),
-            host_response_rate=int(json_data.get("host_response_rate", 100)),
-            instant_bookable=json_data.get("instant_bookable", "0"),
-            latitude=float(json_data.get("latitude", 0.0)),
-            longitude=float(json_data.get("longitude", 0.0)),
-            number_of_reviews=int(json_data.get("number_of_reviews", 0)),
-            review_scores_rating=int(json_data.get("review_scores_rating", 90)),
-            bedrooms=int(json_data.get("bedrooms", 1)),
-            beds=int(json_data.get("beds", 1))
+            property_type=json_data.get("property_type") or "Apartment",
+            room_type=json_data.get("room_type") or "Entire home/apt",
+            amenities=safe_int(json_data.get("amenities"), 0),
+            accommodates=safe_int(json_data.get("accommodates"), 1),
+            bathrooms=safe_float(json_data.get("bathrooms"), 1.0),
+            bed_type=json_data.get("bed_type") or "Real Bed",
+            cancellation_policy=json_data.get("cancellation_policy") or "flexible",
+            cleaning_fee=json_data.get("cleaning_fee") or "1",
+            city=json_data.get("city") or "NYC",
+            host_has_profile_pic=json_data.get("host_has_profile_pic") or "1",
+            host_identity_verified=json_data.get("host_identity_verified") or "1",
+            host_response_rate=safe_int(json_data.get("host_response_rate"), 100),
+            instant_bookable=json_data.get("instant_bookable") or "0",
+            latitude=safe_float(json_data.get("latitude"), 0.0),
+            longitude=safe_float(json_data.get("longitude"), 0.0),
+            number_of_reviews=safe_int(json_data.get("number_of_reviews"), 0),
+            review_scores_rating=safe_int(json_data.get("review_scores_rating"), 90),
+            bedrooms=safe_int(json_data.get("bedrooms"), 1),
+            beds=safe_int(json_data.get("beds"), 1)
         )
 
         final_data = data.get_data_as_dataframe()
@@ -117,4 +134,7 @@ def form():
 
 # Execution begins
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=10000, debug=True)
+    import os
+    # Only enable debug mode if explicitly set via environment variable
+    debug_mode = os.environ.get('FLASK_DEBUG', 'false').lower() == 'true'
+    app.run(host="0.0.0.0", port=10000, debug=debug_mode)
