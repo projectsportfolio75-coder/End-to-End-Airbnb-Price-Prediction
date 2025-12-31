@@ -1,11 +1,8 @@
-numpy
-pandas
-scikit-learn
-flask
-pillow
-catboost
-dvc
-catboost
-xgboost
-seaborn
--e .
+numpy>=2.0.0
+pandas>=2.3.0
+scikit-learn>=1.8.0
+flask>=3.0.0
+catboost>=1.2.8
+Werkzeug>=3.0.3
+flask-cors>=4.0.0
+gunicorn>=22.0.0
