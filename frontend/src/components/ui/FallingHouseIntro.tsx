@@ -45,7 +45,7 @@ export function FallingHouseIntro() {
                                 delay: 0.5
                             }
                         }}
-                        exit={{ opacity: 0, duration: 0 }} // Instant switch to shatter
+                        exit={{ opacity: 0, transition: { duration: 0 } }} // Instant switch to shatter
                         className="relative"
                     >
                         <CartoonHouse />

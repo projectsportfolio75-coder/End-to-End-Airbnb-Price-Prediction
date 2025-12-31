@@ -10,11 +10,11 @@ const config: NextConfig = {
     ],
   },
   async rewrites() {
-    const isDev = process.env.NODE_ENV === 'development';
+    // FORCE PRODUCTION URL
     return [
       {
         source: '/api/index',
-        destination: isDev ? 'http://127.0.0.1:8080/' : 'https://end-to-end-airbnb-price-prediction.onrender.com/',
+        destination: 'https://end-to-end-airbnb-price-prediction.onrender.com/',
       },
     ]
   }
