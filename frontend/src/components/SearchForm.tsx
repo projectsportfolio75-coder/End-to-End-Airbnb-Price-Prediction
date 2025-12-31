@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Search, Loader2 } from "lucide-react";
 import { cn } from "@/utils/cn";
+import { API_URL } from "@/utils/config";
 import { motion, AnimatePresence } from "framer-motion";
 
 const CITIES = ["Mumbai", "Delhi", "Bangalore", "Goa", "Jaipur", "Hyderabad", "Chennai", "Kolkata"];
@@ -19,7 +20,7 @@ export function SearchForm({ onPredict }: { onPredict: (price: number) => void }
         // Simulate API
         const startTime = Date.now();
         try {
-            const res = await fetch("/api/index", {
+            const res = await fetch(`${API_URL}/predict`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

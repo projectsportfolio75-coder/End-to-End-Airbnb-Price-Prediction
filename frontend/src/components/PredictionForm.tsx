@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { Loader2, Check, Sparkles, MapPin } from "lucide-react";
 import { cn } from "@/utils/cn";
+import { API_URL } from "@/utils/config";
 
 const CITIES = ["Mumbai", "Delhi", "Bangalore", "Goa", "Jaipur", "Hyderabad", "Chennai", "Kolkata"];
 const PROPERTY_TYPES = ["Apartment", "Villa", "Bungalow", "Studio", "Heritage Haveli", "Beach House"];
@@ -36,7 +37,7 @@ export function PredictionForm() {
         const startTime = Date.now();
 
         try {
-            const res = await fetch("/api/index", {
+            const res = await fetch(`${API_URL}/predict`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ ...formData, amenities: formData.amenities.join(",") }),
