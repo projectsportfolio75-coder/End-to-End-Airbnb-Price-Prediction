@@ -107,7 +107,7 @@ export function SearchForm({ onPredict }: { onPredict: (price: number) => void }
 
                     {/* Guests */}
                     <div className="flex-0.8 px-8 py-3 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full cursor-pointer relative group">
-                        <label className="block text-xs font-bold text-black dark:text-white tracking-wider">Who</label>
+                        <label className="block text-xs font-bold text-black dark:text-white tracking-wider">GUESTS</label>
                         <div className="text-sm text-gray-600 dark:text-gray-300 font-medium overflow-hidden text-ellipsis whitespace-nowrap">
                             <input
                                 type="number"
@@ -161,7 +161,7 @@ export function SearchForm({ onPredict }: { onPredict: (price: number) => void }
 
                     {/* Guests */}
                     <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-600 p-4">
-                        <label className="block text-xs font-bold text-black dark:text-white tracking-wider mb-2">Who</label>
+                        <label className="block text-xs font-bold text-black dark:text-white tracking-wider mb-2">GUESTS</label>
                         <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
                             <input
                                 type="number"
