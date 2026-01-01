@@ -286,5 +286,4 @@ If you use this project in your research or work, please cite:
 ```
 
 ---
-
 ⭐ If you find this project useful, please consider giving it a star on GitHub!
